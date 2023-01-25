@@ -1,0 +1,50 @@
+﻿@page
+@model Shawarma_website.Pages.Registration.ProfileModel
+@{
+}
+
+<small>@Model.Message</small>
+<p>
+    <div class="insputContainter">
+        <form asp-page-handler="update" method="post">
+            <div class="div1">
+                <label>First Name*</label>
+                <span asp-validation-for="PersonalInfo.FirstName"></span>
+                <input placeholder="Personal.FirstName" asp-for="PersonalInfo.FirstName" />
+            </div>
+            <div class="div2">
+                <label>Last Name*</label>
+                <span asp-validation-for="PersonalInfo.LastName"></span>
+                <input placeholder="PersonalInfo.LastName" asp-for="PersonalInfo.LastName" />
+            </div>
+            <div class="div3">
+                <label>Phone number*</label>
+                <span asp-validation-for="PersonalInfo.PhoneNumber"></span>
+                <input placeholder="PersonalInfo.PhoneNumber" asp-for="PersonalInfo.PhoneNumber" />
+            </div>
+            <div class="div4">
+                <label>Email*</label>
+                <span asp-validation-for="PersonalInfo.Email"></span>
+                <input placeholder="PersonalInfo.Email" asp-for="PersonalInfo.Email" />
+            </div>
+
+            <div class="div5">
+                <label>Username*</label>
+                <span asp-validation-for="PersonalInfo.Username"></span>
+                <input placeholder="PersonalInfo.Username" asp-for="PersonalInfo.Username" />
+            </div>
+            <div class="div6">
+                <label>Password*</label>
+                <span asp-validation-for="Password"></span>
+                <input asp-for="Password" type="text" />
+            </div>
+            <div>
+                <input type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</p>
+@section Scripts
+    {
+<partial name="_ValidationScriptsPartial"/>
+    }

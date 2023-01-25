@@ -1,0 +1,62 @@
+﻿@using Registration;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shawarma </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/ShawarmaIcon.png" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Shawarma_website.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        @if (User.IsInRole("CLIENT") || User.IsInRole("EMPLOYEE"))
+        {
+            <div class="flex-container">
+                <div class="flex-items"><a asp-page="/Index">Home</a></div>
+                <div class="flex-items"><a href="/OrderHandling/ViewItems">Menu</a></div>
+                <div class="flex-items"><a href="/OrderHandling/ViewOrder">Order</a></div>
+                <div class="flex-items"><a href="/Registration/Profile">Profile</a></div>
+                <div class="flex-items"><a asp-page="/Registration/Logout">Logout</a></div>
+            </div>
+        }
+        else if  (User.IsInRole("ADMIN"))
+        {
+            <div class="flex-container">
+                <div class="flex-items"><a asp-page="/Index">Home</a></div>
+                <div class="flex-items"><a href="/Registration/Profile">Profile</a></div>
+                <div class="flex-items"><a asp-page="/ItemHandling/CreateItem">Create item</a></div>
+                <div class="flex-items"><a asp-page="/ItemHandling/ViewItemsAdmin">View Items</a></div>
+                <div class="flex-items"><a asp-page="/Registration/Logout">Logout</a></div>
+            </div>
+        }
+        else
+        {
+            <div class="flex-container">
+                <div class="flex-items"><a class="nav-link text-dark" asp-page="/Index">Home</a></div>
+                <div class="flex-items"><a class="nav-link text-dark" asp-page="/Registration/RegisterUser">Registration</a></div>
+                <div class="flex-items"> <a class="nav-link text-dark" asp-page="/Registration/Login">Login</a></div>
+            </div>
+        }
+
+    </header>
+    <div class="container">
+        <main role="main" class="bodyPic">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer id="footer">
+        <div>
+            2022 - Shawarma_website
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

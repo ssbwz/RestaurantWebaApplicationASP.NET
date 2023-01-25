@@ -1,0 +1,120 @@
+﻿@page
+@model Shawarma_website.Pages.ItemHandling.UpdateItemModel
+@{
+}
+<a>@Model.Message</a>
+@if (Model.Type == "NORMAL")
+{
+    <H4>Normal item</H4>
+    <h5>Id: @Model.NormalItem.Id</h5>
+    <div class="inputContainer">
+        <form  method="post">
+            <label>Item Name</label>
+            <span asp-validation-for="NormalItem.Name"></span>
+            <input type="text" asp-for="NormalItem.Name" asp-for="NormalItem.Name" placeholder="Item name">
+
+            <label>Description</label>
+            <span asp-validation-for="NormalItem.Description"></span>
+            <textarea class="DescriptionForCreatingItem" placeholder="Description" asp-for="NormalItem.Description"></textarea>
+
+            <label>Price</label>
+            <span asp-validation-for="NormalItem.Price"></span>
+            <input type="text" asp-for="NormalItem.Price" placeholder="Price">
+
+            <label>Discount percentage</label>
+            <input type="text" asp-for="NormalItem.Discount" value="0" placeholder="Discount percentage">
+
+
+            <label>Category</label>
+            <span asp-validation-for="NormalItem.Category"></span>
+            <select asp-for="NormalItem.Category">
+                <option value="POPULARDISHES">Popular dishes</option>
+                <option value="STARTERS">Starters</option>
+                <option value="SANDWICHES">Sandwiches</option>
+                <option value="BURGERS">Burgers</option>
+                <option value="DISHES">Dishes</option>
+                <option value="DRINKS">Drinks</option>
+                <option value="COCKTAILS">Cocktails</option>
+            </select>
+            <input type="submit" value="Update">
+            <input type="hidden" name="id" value="@Model.NormalItem.Id" />
+        </form>
+    </div>
+}
+@if (Model.Type == "HOILDAY")
+{
+    <H4>Hoilday item</H4>
+    <h5>Id: @Model.HoildayItem.Id</h5>
+    <div class="inputContainer">
+        <form asp-page-handler="update" method="post">
+            <label>Item Name</label>
+            <span asp-validation-for="HoildayItem.Name"></span>
+            <input type="text" asp-for="HoildayItem.Name" asp-for="HoildayItem.Name" placeholder="Item name">
+
+            <label>Description</label>
+            <span asp-validation-for="HoildayItem.Description"></span>
+            <textarea class="DescriptionForCreatingItem" placeholder="Description" asp-for="HoildayItem.Description"></textarea>
+
+            <label>Price</label>
+            <span asp-validation-for="HoildayItem.Price"></span>
+            <input type="text" asp-for="HoildayItem.Price" placeholder="Price">
+
+            <label>Discount percentage</label>
+            <input type="text" asp-for="HoildayItem.Discount" value="0" placeholder="Discount percentage">
+
+            <label>Category</label>
+            <span asp-validation-for="HoildayItem.Category"></span>
+            <select asp-for="HoildayItem.Category">
+                <option value="POPULARDISHES">Popular dishes</option>
+                <option value="STARTERS">Starters</option>
+                <option value="SANDWICHES">Sandwiches</option>
+                <option value="BURGERS">Burgers</option>
+                <option value="DISHES">Dishes</option>
+                <option value="DRINKS">Drinks</option>
+                <option value="COCKTAILS">Cocktails</option>
+            </select>
+            <input type="submit" value="Update">
+            <input type="hidden" name="id" value="@Model.HoildayItem.Id" />
+        </form>
+    </div>
+}
+@if (Model.Type == "SUMMER")
+{
+    <H4>Summer item</H4>
+    <h5>Id: @Model.SummerItem.Id</h5>
+    <div class="inputContainer">
+        <form asp-page-handler="update" method="post">
+            <label>Item Name</label>
+            <span asp-validation-for="SummerItem.Name"></span>
+            <input type="text" asp-for="SummerItem.Name" asp-for="SummerItem.Name" placeholder="Item name">
+
+            <label>Description</label>
+            <span asp-validation-for="SummerItem.Description"></span>
+            <textarea class="DescriptionForCreatingItem" placeholder="Description" asp-for="SummerItem.Description"></textarea>
+
+            <label>Price</label>
+            <span asp-validation-for="SummerItem.Price"></span>
+            <input type="text" asp-for="SummerItem.Price" placeholder="Price">
+
+            <label>Discount percentage</label>
+            <input type="text" asp-for="SummerItem.Discount" value="0" placeholder="Discount percentage">
+            <label>Category</label>
+            <span asp-validation-for="SummerItem.Category"></span>
+            <select asp-for="SummerItem.Category">
+                <option value="POPULARDISHES">Popular dishes</option>
+                <option value="STARTERS">Starters</option>
+                <option value="SANDWICHES">Sandwiches</option>
+                <option value="BURGERS">Burgers</option>
+                <option value="DISHES">Dishes</option>
+                <option value="DRINKS">Drinks</option>
+                <option value="COCKTAILS">Cocktails</option>
+            </select>
+            <input type="submit" value="Update">
+            <input type="hidden" name="id" value="@Model.SummerItem.Id" />
+        </form>
+    </div>
+}
+@section Scripts
+    {
+<partial name="_ValidationScriptsPartial" />
+    }

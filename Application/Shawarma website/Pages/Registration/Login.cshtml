@@ -1,0 +1,24 @@
+﻿@page
+@model Shawarma_website.Pages.Registration.LoginModel
+@{
+}
+    <small>@Model.Error</small>
+<div><form method="post">
+
+    <div class="centerMiddlePage">
+        <div class="div1centerMiddlePage">
+    <label>Username</label>
+    <input asp-for="Username" name="Username"/>
+  
+     <label>Password</label>
+    <input type="Password"  asp-for="Password"/>
+    <div class="div2centerMiddlePage">
+        <a asp-page= "/Registration/RegisterUser">Do not have an account register?</a>  
+   
+    <input type="submit" value="Login"/>
+    </div>
+    </div>
+    </div>
+     
+</form>
+</div>

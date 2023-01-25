@@ -1,0 +1,31 @@
+﻿@page
+@model Shawarma_website.Pages.ItemHandling.ViewItemsAdminModel
+@{
+}
+<div>
+    @foreach (var item in Model.Items)
+    {
+        <div class="parentViewItems">
+
+            <div class="div1ViewItems">
+                <h3>Id: @item.Id</h3>  <h3>@item.Name</h3>
+            </div>
+            <div class="div2ViewItems">
+                <Detail>@item.Description</Detail>
+            </div>
+            <div class="div3ViewItems">
+            </div>
+            <div class="div4ViewItems">
+                <a>Price: @item.Price</a>
+                <form asp-page-handler="update" method="post">
+                    <input class="AddToOrderButton" type="submit" value="Update" />
+                    <input type="hidden" name="id" value="@item.Id" />
+                </form>
+                <form asp-page-handler="Remove" method="post">
+                    <input class="AddToOrderButton" type="submit" value="Remove" />
+                    <input type="hidden" name="id" value="@item.Id" />
+                </form>
+            </div>
+        </div>
+    }
+</div>

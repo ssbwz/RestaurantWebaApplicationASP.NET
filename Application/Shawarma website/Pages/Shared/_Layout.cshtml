@@ -1,0 +1,55 @@
+﻿@using Registration;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Shawarma </title>
+    <link rel="shortcut icon" type="image/x-icon" href="/ShawarmaIcon.png" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Shawarma_website.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        @if (Registration.LoginModel.CurrentUser != null)
+        {
+            <div class="flex-container">
+                <div class="flex-items"><a asp-page="/Index">Home</a></div>
+                <div class="flex-items"><a asp-page="/Registration/RegisterUser">Registration</a></div>
+                <div class="flex-items"><a href="/Registration/Profile?id=@LoginModel.CurrentUser.Id">Profile</a></div>
+                <div class="flex-items"><a asp-page="/Registration/Profile">Profile</a></div>
+            </div>
+        }
+        @if (Registration.LoginModel.CurrentUser == null)
+        {
+            <div class="flex-container">
+                <div class="flex-items"><a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a></div>
+                <div class="flex-items"><a class="nav-link text-dark" asp-area="" asp-page="/Registration/RegisterUser">Registration</a></div>
+                <div class="flex-items"> <a class="nav-link text-dark" asp-area="" asp-page="/Registration/Login">Login</a></div>
+            </div>
+        }
+
+    </header>
+    <div class="container">
+        <main role="main" class="bodyPic">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div>
+            2022 - Shawarma_website
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @section Scripts
+    {
+    <partial name=“_ValidationScriptsPartial” />
+    }
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

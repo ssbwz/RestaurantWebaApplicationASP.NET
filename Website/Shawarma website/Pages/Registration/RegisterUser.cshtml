@@ -1,0 +1,37 @@
+﻿@page
+@model Shawarma_website.Pages.Registration.RegisterUserModel
+@{
+}
+
+<small>@Model.Message</small>
+<div>
+    <form method="post">
+        <label>First Name</label>
+        <span asp-validation-for="PersonalInfo.FirstName"></span>
+        <input asp-for="PersonalInfo.FirstName" />
+        <label>Last Name</label>
+        <span asp-validation-for="PersonalInfo.LastName"></span>
+        <input asp-for="PersonalInfo.LastName" />
+        <label>Phone number</label>
+        <span asp-validation-for="PersonalInfo.PhoneNumber"></span>
+        <input asp-for="PersonalInfo.PhoneNumber" />
+        <label>Email</label>
+        <span asp-validation-for="PersonalInfo.Email"></span>
+        <input asp-for="PersonalInfo.Email" />
+        <label>Username</label>
+        <span asp-validation-for="PersonalInfo.Username"></span>
+        <input asp-for="PersonalInfo.Username" />
+        <label>Password</label>
+        <span asp-validation-for="PersonalInfo.Password"></span>
+        <input asp-for="PersonalInfo.Password" />
+        <div>
+            <input type="submit" value="Submit" />
+            <input type="reset" value="Cancel" />
+        </div>
+    </form>
+</div>
+@section Scripts
+    {
+<partial name="_ValidationScriptsPartial" />
+    }
+

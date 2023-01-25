@@ -1,0 +1,88 @@
+﻿@page
+@model Shawarma_website.Pages.ViewOrderModel
+@{
+}
+<div class="ViewOrderContainer">
+    <h4>@Model.Message</h4>
+    <div class="div1">
+
+        @if (@Model.SelectedOrder != null)
+        {
+            @if (@Model.GetItemsPerOrder(Model.SelectedOrder.Id).Count == 0)
+            {
+                <h3>There are no items selected</h3>
+            }
+            @foreach (var item in Model.GetItemsPerOrder(Model.SelectedOrder.Id))
+            {
+                <div class="parentViewItems">
+                    <div class="div1ViewItems">
+                        <h3>@item.Name</h3>
+                    </div>
+                    <div class="div2ViewItems">
+                        <Detail>@item.Description</Detail>
+                    </div>
+                    <div class="div3ViewItems">
+                        <a>Amount: @item.Quantity</a>
+                    </div>
+                    <div class="div4ViewItems">
+                        <a>Price per item: @item.Price</a>
+                        @if (Model.SelectedOrder.OrderStatus == Shawarma.Enum.OrderStatus.CREATED)
+                        {
+                            <form asp-page-handler="delete" method="post">
+                                <input class="AddToOrderButton" type="submit" value="Delete" />
+                            <input type="hidden" name="itemId" value="@item.Id" />
+                        </form>
+                    }
+                </div>
+            </div>
+        }
+        }
+        
+    </div>
+    <div class="div2">
+        <div class="orderOverViewAndOldOrders">
+            <div class="div1orderOverViewAndOldOrders">
+        @if (@Model.CurrentOrder == null)
+        {
+            <h3>There are no order created</h3>
+        }
+        @if (@Model.CurrentOrder != null)
+        {
+            <form asp-page-handler="sendorder" method="post" class="orderContainer">
+                <a>Order number: @Model.CurrentOrder.Id</a>
+                <a>Order Status: @Model.Status</a>
+                <a>Total: @Model.GetTotal(@Model.CurrentOrder.Id)</a>
+                <a>Name: @Model.Name </a>
+                @if (Model.CurrentOrder.OrderStatus != Shawarma.Enum.OrderStatus.CREATED)
+                {
+                    <input asp-for=CurrentOrder.Note name="note" placeholder="Over here you can write note and you can include your phone number if you want us to call you" readonly />
+                }
+                @if (Model.CurrentOrder.OrderStatus == Shawarma.Enum.OrderStatus.CREATED)
+                {
+                    <input asp-for=CurrentOrder.Note name="note" placeholder="Over here you can write note and you can include your phone number if you want us to call you" />
+                    <input type="submit" value="Submit" />
+                }
+            </form>
+            
+        }
+        </div>
+        <div class="div2orderOverViewAndOldOrders">
+        @if (@Model.CleintOrders.Count == 0)
+        {
+            <h3>There are no done orders</h3>
+        }
+        @foreach (var order in Model.CleintOrders)
+        {
+            <form asp-page-handler="selected" method="post" class="orderContainer">
+
+                <a>Order number: @order.Id</a>
+                <a>Order Status: @order.OrderStatus.ToString()</a>
+                <a>Total: @Model.GetTotal(order.Id)</a>
+                <input name="orderId" value="@order.Id" hidden="hidden">
+                <input type="submit" value="Show">
+            </form>
+        }
+        </div>
+        </div>
+    </div>
+</div>
