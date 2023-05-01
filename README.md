@@ -17,7 +17,6 @@ The Restaurant Application comes with the following features:
 - User authentication and authorization
 - Add, edit and delete menu items
 - Create and manage orders
-- Generate order reports
 - Manage customer profiles
 
 ## Installation
