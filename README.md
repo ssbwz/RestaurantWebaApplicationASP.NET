@@ -2,12 +2,12 @@
 
 ## Introduction
 
-This repository contains the code for a restaurant application. The application is designed to help restaurant owners manage their menu, orders, and customers. 
+This repository contains the code for a restaurant application. The application is designed to help restaurant owners manage their menu, orders, and customers.
 
 The application is built using the following technologies:
 
 - Programming language: C#
-- Framework: ASP.NET
+- Frameworks: ASP.NET, Windows Forms
 - Database: MySQL
 
 ## Features
